@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中超联赛赛程日历 | CSL Calendar</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f5f7fa;
+      color: #1a1a2e;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b2a4a 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #a0b4cc;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .team-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .team-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-1px);
+    }
+
+    .team-name {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-subscribe {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .btn-subscribe:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-download {
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    .btn-download:hover {
+      background: #e2e8f0;
+    }
+
+    .how-to {
+      margin-top: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .how-to h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #334155;
+    }
+
+    .how-to ol {
+      padding-left: 1.25rem;
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+
+    .how-to ol li + li { margin-top: 0.35rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8125rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      .team-card { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>中超联赛赛程日历</h1>
+  <p>CSL Calendar — 订阅你支持的球队赛程</p>
+</header>
+
+<div class="container">
+  <h2 class="section-title">中超 CSL · 2026 赛季</h2>
+
+  <ul class="team-list" id="teamList">
+    <li class="team-card" data-ics="calendar/CSL/上海申花.ics">
+      <span class="team-name">上海申花</span>
+      <span class="actions">
+        <a class="btn btn-subscribe" href="#" data-role="subscribe">订阅</a>
+        <a class="btn btn-download" href="calendar/CSL/上海申花.ics" download>下载</a>
+      </span>
+    </li>
+  </ul>
+
+  <div class="how-to">
+    <h3>如何使用</h3>
+    <ol>
+      <li>点击「订阅」，日历应用将自动打开并添加赛程</li>
+      <li>或点击「下载」获取 .ics 文件，手动导入到日历应用</li>
+      <li>订阅后赛程更新会自动同步到你的日历</li>
+    </ol>
+  </div>
+</div>
+
+<footer>CSL Calendar · 中超联赛赛程日历</footer>
+
+<script>
+  document.querySelectorAll('[data-role="subscribe"]').forEach(function (btn) {
+    var card = btn.closest('[data-ics]');
+    if (!card) return;
+    var icsPath = card.getAttribute('data-ics');
+    var pageUrl = new URL(icsPath, window.location.href);
+    var webcalUrl = pageUrl.href.replace(/^https?:/, 'webcal:');
+    btn.href = webcalUrl;
+  });
+</script>
+
+</body>
+</html>
