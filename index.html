@@ -22,128 +22,93 @@
       text-align: center;
     }
 
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: 0.02em; }
+    header p { margin-top: 0.5rem; font-size: 1rem; color: #a0b4cc; }
 
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #a0b4cc;
-    }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
+    .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
     .section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #475569;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
+      font-size: 1.125rem; font-weight: 600; color: #475569;
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
       border-bottom: 2px solid #e2e8f0;
     }
 
-    .team-list {
-      list-style: none;
-      display: grid;
-      gap: 0.75rem;
-    }
+    .section-title + .section-title,
+    .match-list + .section-title { margin-top: 2.5rem; }
+
+    /* --- Team cards --- */
+    .team-list { list-style: none; display: grid; gap: 0.625rem; }
 
     .team-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: #fff; border-radius: 10px;
+      padding: 0.85rem 1.15rem;
+      display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 1px 3px rgba(0,0,0,0.06);
       transition: box-shadow 0.2s, transform 0.2s;
     }
+    .team-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
 
-    .team-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transform: translateY(-1px);
-    }
+    .team-name { font-size: 0.95rem; font-weight: 500; }
 
-    .team-name {
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .actions {
-      display: flex;
-      gap: 0.5rem;
-    }
+    .actions { display: flex; gap: 0.4rem; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 6px;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.2s;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.35rem 0.75rem; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 500;
+      text-decoration: none; transition: background 0.2s;
     }
+    .btn-subscribe { background: #2563eb; color: #fff; }
+    .btn-subscribe:hover { background: #1d4ed8; }
+    .btn-download { background: #f1f5f9; color: #334155; }
+    .btn-download:hover { background: #e2e8f0; }
 
-    .btn-subscribe {
-      background: #2563eb;
-      color: #fff;
-    }
+    /* --- Upcoming matches --- */
+    .match-list { list-style: none; display: grid; gap: 0.5rem; }
 
-    .btn-subscribe:hover {
-      background: #1d4ed8;
-    }
-
-    .btn-download {
-      background: #f1f5f9;
-      color: #334155;
-    }
-
-    .btn-download:hover {
-      background: #e2e8f0;
-    }
-
-    .how-to {
-      margin-top: 2.5rem;
-      padding: 1.25rem 1.5rem;
-      background: #fff;
-      border-radius: 10px;
+    .match-item {
+      background: #fff; border-radius: 10px;
+      padding: 0.85rem 1.15rem;
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 1rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
 
-    .how-to h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: #334155;
+    .match-date {
+      text-align: center; min-width: 3.2rem;
+      font-size: 0.75rem; color: #64748b; line-height: 1.35;
+    }
+    .match-date .day { font-size: 1.25rem; font-weight: 700; color: #1e293b; }
+
+    .match-info { min-width: 0; }
+    .match-teams { font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .match-meta { font-size: 0.75rem; color: #94a3b8; margin-top: 0.15rem; }
+
+    .match-round {
+      font-size: 0.7rem; font-weight: 500; color: #64748b;
+      background: #f1f5f9; border-radius: 4px;
+      padding: 0.2rem 0.5rem; white-space: nowrap;
     }
 
-    .how-to ol {
-      padding-left: 1.25rem;
-      font-size: 0.875rem;
-      color: #64748b;
-    }
+    .empty-state { color: #94a3b8; font-size: 0.875rem; padding: 1rem 0; }
 
+    /* --- How to --- */
+    .how-to {
+      margin-top: 2.5rem; padding: 1.25rem 1.5rem;
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .how-to h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem; color: #334155; }
+    .how-to ol { padding-left: 1.25rem; font-size: 0.875rem; color: #64748b; }
     .how-to ol li + li { margin-top: 0.35rem; }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.8125rem;
-      color: #94a3b8;
-    }
+    footer { text-align: center; padding: 2rem 1rem; font-size: 0.8125rem; color: #94a3b8; }
 
     @media (max-width: 480px) {
       header h1 { font-size: 1.5rem; }
-      .team-card { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .team-card { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .match-item { grid-template-columns: auto 1fr; }
+      .match-round { display: none; }
     }
   </style>
 </head>
@@ -155,16 +120,14 @@
 </header>
 
 <div class="container">
-  <h2 class="section-title">中超 CSL · 2026 赛季</h2>
+  <h2 class="section-title" id="upcomingTitle">接下来的比赛</h2>
+  <ul class="match-list" id="matchList">
+    <li class="empty-state">加载中…</li>
+  </ul>
 
+  <h2 class="section-title">球队日历订阅</h2>
   <ul class="team-list" id="teamList">
-    <li class="team-card" data-ics="calendar/CSL/上海申花.ics">
-      <span class="team-name">上海申花</span>
-      <span class="actions">
-        <a class="btn btn-subscribe" href="#" data-role="subscribe">订阅</a>
-        <a class="btn btn-download" href="calendar/CSL/上海申花.ics" download>下载</a>
-      </span>
-    </li>
+    <li class="empty-state">加载中…</li>
   </ul>
 
   <div class="how-to">
@@ -180,14 +143,75 @@
 <footer>CSL Calendar · 中超联赛赛程日历</footer>
 
 <script>
-  document.querySelectorAll('[data-role="subscribe"]').forEach(function (btn) {
-    var card = btn.closest('[data-ics]');
-    if (!card) return;
-    var icsPath = card.getAttribute('data-ics');
-    var pageUrl = new URL(icsPath, window.location.href);
-    var webcalUrl = pageUrl.href.replace(/^https?:/, 'webcal:');
-    btn.href = webcalUrl;
-  });
+(function () {
+  var DATA_URL = 'data/2026/CSL.json';
+  var LEAGUE_ID = 'CSL';
+  var WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
+  fetch(DATA_URL)
+    .then(function (r) { return r.json(); })
+    .then(function (data) { render(data); })
+    .catch(function () {
+      document.getElementById('matchList').innerHTML = '<li class="empty-state">数据加载失败</li>';
+      document.getElementById('teamList').innerHTML = '<li class="empty-state">数据加载失败</li>';
+    });
+
+  function render(data) {
+    renderTeams(data);
+    renderUpcoming(data);
+  }
+
+  function renderTeams(data) {
+    var teams = Object.keys(data.teams).sort();
+    var html = '';
+    teams.forEach(function (team) {
+      var icsPath = 'calendar/' + LEAGUE_ID + '/' + encodeURIComponent(team) + '.ics';
+      var pageUrl = new URL(icsPath, window.location.href);
+      var webcalUrl = pageUrl.href.replace(/^https?:/, 'webcal:');
+      html += '<li class="team-card">'
+        + '<span class="team-name">' + team + '</span>'
+        + '<span class="actions">'
+        + '<a class="btn btn-subscribe" href="' + webcalUrl + '">订阅</a>'
+        + '<a class="btn btn-download" href="' + icsPath + '" download>下载</a>'
+        + '</span></li>';
+    });
+    document.getElementById('teamList').innerHTML = html;
+  }
+
+  function renderUpcoming(data) {
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var upcoming = data.matches
+      .filter(function (m) { return new Date(m.date) >= today; })
+      .sort(function (a, b) { return (a.date + a.time).localeCompare(b.date + b.time); });
+
+    if (upcoming.length === 0) {
+      document.getElementById('matchList').innerHTML = '<li class="empty-state">暂无接下来的比赛</li>';
+      document.getElementById('upcomingTitle').textContent = '接下来的比赛';
+      return;
+    }
+
+    document.getElementById('upcomingTitle').textContent = '接下来的比赛（' + upcoming.length + '场）';
+
+    var html = '';
+    upcoming.forEach(function (m) {
+      var d = new Date(m.date + 'T00:00:00');
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var weekday = WEEKDAYS[d.getDay()];
+
+      html += '<li class="match-item">'
+        + '<div class="match-date"><div class="day">' + day + '</div>' + month + '月 ' + weekday + '</div>'
+        + '<div class="match-info">'
+        + '<div class="match-teams">' + m.home + ' vs ' + m.away + '</div>'
+        + '<div class="match-meta">' + m.time + ' · ' + (m.venue || '') + '</div>'
+        + '</div>'
+        + '<span class="match-round">第' + m.round + '轮</span>'
+        + '</li>';
+    });
+    document.getElementById('matchList').innerHTML = html;
+  }
+})();
 </script>
 
 </body>
